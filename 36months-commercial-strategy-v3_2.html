@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>36 Months — Commercial Strategy Phase 2</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --purple-50: #EEEDFE; --purple-200: #AFA9EC; --purple-400: #7F77DD; --purple-600: #534AB7; --purple-800: #3C3489; --purple-900: #26215C;
+    --teal-50: #E1F5EE; --teal-400: #1D9E75; --teal-600: #0F6E56; --teal-800: #085041;
+    --amber-50: #FAEEDA; --amber-400: #BA7517; --amber-800: #633806;
+    --coral-50: #FAECE7; --coral-400: #D85A30;
+    --blue-50: #E6F1FB; --blue-400: #378ADD; --blue-800: #0C447C;
+    --gray-50: #F1EFE8; --gray-100: #D3D1C7; --gray-200: #B4B2A9; --gray-400: #888780; --gray-600: #5F5E5A; --gray-800: #444441;
+    --text-primary: #1a1a18;
+    --text-secondary: #5F5E5A;
+    --text-muted: #888780;
+    --border: rgba(0,0,0,0.12);
+    --border-md: rgba(0,0,0,0.2);
+    --bg: #ffffff;
+    --bg-secondary: #F7F6F2;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text-primary: #F0EEE8;
+      --text-secondary: #B4B2A9;
+      --text-muted: #888780;
+      --border: rgba(255,255,255,0.12);
+      --border-md: rgba(255,255,255,0.22);
+      --bg: #1a1a18;
+      --bg-secondary: #242420;
+    }
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--purple-600); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ── Layout ── */
+  .page { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
+
+  /* ── Nav ── */
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg);
+    border-bottom: 0.5px solid var(--border);
+    padding: 0.75rem 0;
+    margin-bottom: 2rem;
+    display: flex; gap: 1.5rem; flex-wrap: wrap;
+  }
+  .nav a { font-size: 13px; color: var(--text-secondary); }
+  .nav a:hover { color: var(--text-primary); text-decoration: none; }
+
+  /* ── Hero ── */
+  .hero { padding: 3.5rem 0 3rem; border-bottom: 0.5px solid var(--border); margin-bottom: 2.5rem; }
+  .hero-eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
+  .hero-title { font-size: 40px; font-weight: 500; color: var(--text-primary); line-height: 1.15; margin-bottom: 1.25rem; }
+  .hero-title span { color: var(--purple-800); }
+  .hero-sub { font-size: 16px; color: var(--text-secondary); line-height: 1.75; max-width: 640px; }
+  .hero-meta { display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
+  .hero-stat-num { font-size: 26px; font-weight: 500; color: var(--text-primary); }
+  .hero-stat-label { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+  /* ── Section ── */
+  .section { margin-bottom: 3rem; scroll-margin-top: 60px; }
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .section-title { font-size: 22px; font-weight: 500; color: var(--text-primary); margin-bottom: 1rem; }
+  .section-body { font-size: 15px; color: var(--text-secondary); line-height: 1.75; }
+  .section-body + .section-body { margin-top: 0.85rem; }
+
+  .divider { height: 0.5px; background: var(--border); margin: 2.5rem 0; }
+
+  /* ── Insight boxes ── */
+  .insight-box { background: var(--purple-50); border-radius: var(--radius-lg); padding: 1.5rem 1.75rem; margin: 1.5rem 0; }
+  .insight-box p { font-size: 16px; font-weight: 500; color: var(--purple-800); line-height: 1.6; }
+  .insight-box.teal { background: var(--teal-50); }
+  .insight-box.teal p { color: var(--teal-800); }
+
+  /* ── Callout ── */
+  .callout { border-left: 3px solid var(--purple-400); padding: 1rem 1.25rem; margin: 1.5rem 0; background: var(--bg-secondary); border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+  .callout p { font-size: 15px; font-style: italic; color: var(--text-primary); line-height: 1.7; }
+
+  /* ── Card grid ── */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-top: 1.25rem; }
+  .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
+  .card-icon { width: 32px; height: 32px; border-radius: 8px; margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: center; }
+  .card-icon.purple { background: var(--purple-50); }
+  .card-icon.teal { background: var(--teal-50); }
+  .card-icon.amber { background: var(--amber-50); }
+  .card-icon.coral { background: var(--coral-50); }
+  .card-title { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 0.4rem; }
+  .card-body { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+  /* ── Two col ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.25rem; }
+  @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+  .narrative-card { border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
+  .narrative-card.accent-left { border-left: 3px solid var(--purple-400); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; }
+  .narrative-card.accent-left.teal { border-left-color: var(--teal-400); }
+  .nc-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-bottom: 0.4rem; }
+  .nc-title { font-size: 15px; font-weight: 500; color: var(--text-primary); margin-bottom: 0.5rem; }
+  .nc-body { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+
+  /* ── Timeline ── */
+  .timeline { margin-top: 1.5rem; position: relative; padding-left: 1.5rem; border-left: 1.5px solid var(--border-md); }
+  .timeline-item { margin-bottom: 1.75rem; position: relative; }
+  .timeline-item:last-child { margin-bottom: 0; }
+  .tl-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--purple-400); position: absolute; left: -1.95rem; top: 3px; }
+  .tl-dot.teal { background: var(--teal-400); }
+  .tl-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-bottom: 0.3rem; }
+  .tl-title { font-size: 15px; font-weight: 500; color: var(--text-primary); margin-bottom: 0.4rem; }
+  .tl-body { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+
+  /* ── Stakeholder grid ── */
+  .stakeholder-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 1.25rem; }
+  .sh-card { border-radius: var(--radius-lg); padding: 1.25rem; border: 0.5px solid var(--border); background: var(--bg); }
+  .sh-icon-row { display: flex; align-items: center; gap: 10px; margin-bottom: 0.85rem; }
+  .sh-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .sh-name { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+  .sh-want-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .sh-want-list { list-style: none; }
+  .sh-want-list li { font-size: 13px; color: var(--text-secondary); line-height: 1.6; padding: 4px 0; border-bottom: 0.5px solid var(--border); display: flex; align-items: flex-start; gap: 8px; }
+  .sh-want-list li:last-child { border-bottom: none; }
+  .sh-dot { width: 5px; height: 5px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+  .s-teen .sh-avatar { background: var(--purple-50); }
+  .s-parent .sh-avatar { background: var(--teal-50); }
+  .s-school .sh-avatar { background: var(--amber-50); }
+  .s-biz .sh-avatar { background: var(--coral-50); }
+  .s-gov .sh-avatar { background: var(--blue-50); }
+
+  /* ── Platform layers ── */
+  .platform-layer { border: 0.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 10px; }
+  .layer-header { padding: 1rem 1.25rem; display: flex; align-items: center; gap: 12px; }
+  .layer-badge { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; }
+  .badge-1 { background: var(--purple-50); color: var(--purple-800); }
+  .badge-2 { background: var(--teal-50); color: var(--teal-800); }
+  .badge-3 { background: var(--amber-50); color: var(--amber-800); }
+  .layer-title { font-size: 15px; font-weight: 500; color: var(--text-primary); flex: 1; }
+  .layer-sub { font-size: 13px; color: var(--text-muted); }
+  .layer-body { padding: 0 1.25rem 1.25rem; border-top: 0.5px solid var(--border); }
+  .layer-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.75rem; }
+  .tag { font-size: 12px; padding: 3px 10px; border-radius: 20px; border: 0.5px solid var(--border-md); color: var(--text-secondary); }
+
+  /* ── Ideas grid ── */
+  .ideas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 1.25rem; }
+  .idea-card { background: var(--bg-secondary); border-radius: var(--radius-lg); padding: 1.25rem; }
+  .idea-num { font-size: 11px; font-weight: 500; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .idea-title { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 0.5rem; }
+  .idea-body { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+  /* ── Revenue table ── */
+  .revenue-table { width: 100%; border-collapse: collapse; margin-top: 1.25rem; font-size: 14px; table-layout: fixed; }
+  .revenue-table th { text-align: left; font-weight: 500; font-size: 12px; color: var(--text-muted); padding: 0 0 0.75rem; border-bottom: 0.5px solid var(--border); }
+  .revenue-table td { padding: 0.75rem 0.5rem 0.75rem 0; border-bottom: 0.5px solid var(--border); color: var(--text-primary); vertical-align: top; }
+  .revenue-table td:last-child { color: var(--text-secondary); font-size: 13px; }
+  .revenue-table tr:last-child td { border-bottom: none; }
+
+  /* ── Risk rows ── */
+  .risk-row { display: flex; gap: 1rem; padding: 0.9rem 0; border-bottom: 0.5px solid var(--border); font-size: 14px; }
+  .risk-row:last-child { border-bottom: none; }
+  .risk-label { font-weight: 500; color: var(--text-primary); min-width: 200px; flex-shrink: 0; }
+  .risk-fix { color: var(--text-secondary); flex: 1; }
+  @media (max-width: 560px) { .risk-row { flex-direction: column; gap: 0.4rem; } }
+
+  /* ── Finch strip ── */
+  .finch-strip { border: 0.5px solid var(--purple-200); background: var(--purple-50); border-radius: var(--radius-lg); padding: 1rem 1.25rem; margin: 1.5rem 0; }
+  .finch-inner { display: flex; gap: 12px; align-items: flex-start; }
+  .finch-logo-mark { width: 32px; height: 32px; border-radius: 50%; background: var(--purple-600); color: #fff; font-size: 14px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .finch-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--purple-600); margin-bottom: 0.25rem; }
+  .finch-text { font-size: 13px; color: var(--purple-800); line-height: 1.6; }
+  .finch-text a { color: var(--purple-600); font-weight: 500; }
+
+  /* ── Footer ── */
+  .footer { padding: 2rem 0 1rem; }
+  .footer-meta { font-size: 13px; color: var(--text-muted); margin-top: 1rem; }
+
+  @media (max-width: 600px) {
+    .hero-title { font-size: 28px; }
+    .section-title { font-size: 20px; }
+    .nav { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <nav class="nav">
+    <a href="#s-opportunity">Opportunity</a>
+    <a href="#s-longgame">The long game</a>
+    <a href="#s-stakeholders">Stakeholders</a>
+    <a href="#s-platform">Platform</a>
+    <a href="#s-bigideas">Big ideas</a>
+    <a href="#s-revenue">Revenue</a>
+    <a href="#s-gtm">Go-to-market</a>
+    <a href="#s-risks">Risks</a>
+  </nav>
+
+  <div class="hero">
+    <p class="hero-eyebrow">Commercial Strategy — Phase 2 · Confidential</p>
+    <h1 class="hero-title">Building the infrastructure<br>for <span>confident, capable,<br>connected teens.</span></h1>
+    <p class="hero-sub">36 Months created the mandate. Now we need to build the system that doesn't just fill a void for today's teens, but establishes the default way the next generation grows up. A platform that makes real life more rewarding than any feed, so kids self select a more balanced and rounded youth that drives confidence, capabilities and genuine connections.</p>
+    <div class="hero-meta">
+      <div class="hero-stat">
+        <div class="hero-stat-num">125k+</div>
+        <div class="hero-stat-label">Petition signatures</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">2.3B</div>
+        <div class="hero-stat-label">Media impressions</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">~1.2M</div>
+        <div class="hero-stat-label">Target teens (AU)</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">World-first</div>
+        <div class="hero-stat-label">Age legislation</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPPORTUNITY -->
+  <div class="section" id="s-opportunity">
+    <p class="section-label">The opportunity</p>
+    <h2 class="section-title">The void is the opportunity.</h2>
+    <p class="section-body">The campaign successfully raised the social media access age from 13 to 16. But legislation and regulation can only go so far — and if the void is not filled, the gravitational pull of low effort dopamine hits will ultimately win. The unintended consequence is stark: a core identity, social, and dopamine system has been removed from teens without a replacement. That gap is not a problem — it is a category-defining commercial opportunity.</p>
+
+    <div class="insight-box">
+      <p>"No one has yet built the operating system for adolescence without social media. 36 Months has the brand, the trust, and the mandate to build it first."</p>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon purple">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="#534AB7" stroke-width="1.2"/><path d="M5 8h6M5 5.5h6M5 10.5h3" stroke="#534AB7" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="card-title">Education</div>
+        <div class="card-body">School wellbeing mandates, curriculum alignment, and institutional SaaS.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon teal">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="7" r="4" stroke="#0F6E56" stroke-width="1.2"/><path d="M8 5.5v1.5l1 1" stroke="#0F6E56" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="card-title">Youth mental health</div>
+        <div class="card-body">Measurable wellbeing uplift with government co-funding potential.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon amber">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13V7l5-5 5 5v6" stroke="#BA7517" stroke-width="1.2" stroke-linecap="round"/><rect x="6" y="9" width="4" height="4" rx="0.5" stroke="#BA7517" stroke-width="1.2"/></svg>
+        </div>
+        <div class="card-title">Workforce readiness</div>
+        <div class="card-body">Jobs, skills pathways, and employer partnerships with real stakes.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon coral">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 10c2-4 4-6 6-6s4 2 6 6" stroke="#D85A30" stroke-width="1.2" stroke-linecap="round"/><path d="M5 13c1-2 1.5-3 3-3s2 1 3 3" stroke="#D85A30" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="card-title">ESG investment</div>
+        <div class="card-body">Corporates seeking credibility, youth access, and measurable social impact.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- LONG GAME -->
+  <div class="section" id="s-longgame">
+    <p class="section-label">The long game</p>
+    <h2 class="section-title">This isn't kicking the ball down the road.</h2>
+    <p class="section-body">The most important distinction in this strategy is the difference between two cohorts — and why this platform must be built to serve both.</p>
+
+    <div class="two-col">
+      <div class="narrative-card accent-left">
+        <div class="nc-label">Cohort 1 — Today's teens (13–16)</div>
+        <div class="nc-title">Filling the void</div>
+        <div class="nc-body">These kids had social media — and now it's gone. For them, the platform must replace what was taken: status, identity, entertainment, and social connection. The experience must be compelling enough to fill that gap genuinely, not just as a substitute.</div>
+      </div>
+      <div class="narrative-card accent-left teal">
+        <div class="nc-label">Cohort 2 — Tomorrow's teens</div>
+        <div class="nc-title">Never knowing the alternative</div>
+        <div class="nc-body">These kids will grow up with this platform as the default. They won't experience the loss of social media — they'll inherit a world where real life already offers more status, more fun, and more belonging. The question of "going back" won't arise in the same way.</div>
+      </div>
+    </div>
+
+    <div class="insight-box teal">
+      <p>"When real life is genuinely more rewarding than the feed — in ways that are visible, social, and fun — the gravitational pull back to social media weakens with each generation. This is how you build a lasting behaviour shift, not a temporary one."</p>
+    </div>
+
+    <p class="section-body">The long-term commercial proposition depends on this. A platform that only serves today's cohort is a programme. A platform that shapes how the next generation comes of age is infrastructure — and infrastructure compounds in value over time.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tl-dot"></div>
+        <div class="tl-label">Now — 2025</div>
+        <div class="tl-title">The legislation lands</div>
+        <div class="tl-body">Social media access removed for under-16s. A void exists. Today's 13–16 cohort needs replacement structures urgently. The platform launches as the answer.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-dot"></div>
+        <div class="tl-label">2026–2028</div>
+        <div class="tl-title">The platform becomes the norm</div>
+        <div class="tl-body">Schools adopt the measurement layer. Corporates build jobs and skills programs. Real-world status systems become culturally visible. For the incoming cohort, this is simply how things are.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-dot teal"></div>
+        <div class="tl-label">2029 onwards</div>
+        <div class="tl-title">The gravitational shift</div>
+        <div class="tl-body">Kids turning 16 and gaining social media access find that it competes with — rather than dominates — a rich, rewarding real world. The platform has done its job not by restricting, but by building something better. 36 Months becomes a category, not a campaign.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- STAKEHOLDERS -->
+  <div class="section" id="s-stakeholders">
+    <p class="section-label">Stakeholder value</p>
+    <h2 class="section-title">Five groups. One aligned system.</h2>
+    <p class="section-body">The power of this platform is that every stakeholder gets something they genuinely want — and each one's participation makes the system more valuable for the others. The teenager sits at the centre of everything.</p>
+
+    <style>
+      .hub-spoke { position: relative; width: 100%; margin: 2rem 0; }
+      .hub-spoke-inner { display: grid; grid-template-columns: 1fr 200px 1fr; grid-template-rows: 1fr 1fr; gap: 12px; align-items: center; }
+      .hub-center { grid-column: 2; grid-row: 1 / 3; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--purple-50); border: 2px solid var(--purple-400); border-radius: 50%; aspect-ratio: 1; padding: 1.25rem; text-align: center; position: relative; z-index: 2; }
+      .hub-center .sh-avatar { width: 44px; height: 44px; font-size: 22px; background: transparent; margin: 0 auto 0.5rem; }
+      .hub-center .hub-name { font-size: 14px; font-weight: 500; color: var(--purple-800); margin-bottom: 0.5rem; }
+      .hub-center .hub-items { font-size: 11px; color: var(--purple-600); line-height: 1.6; }
+      .spoke-card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1rem; position: relative; }
+      .spoke-card::after { content: ''; position: absolute; background: var(--border-md); z-index: 1; }
+      .spoke-card.left::after { right: -14px; top: 50%; width: 14px; height: 1px; }
+      .spoke-card.right::after { left: -14px; top: 50%; width: 14px; height: 1px; }
+      .spoke-emoji { font-size: 18px; margin-bottom: 0.4rem; }
+      .spoke-name { font-size: 13px; font-weight: 500; color: var(--text-primary); margin-bottom: 0.35rem; }
+      .spoke-items { font-size: 12px; color: var(--text-secondary); line-height: 1.6; list-style: none; }
+      .spoke-items li { padding: 2px 0; border-bottom: 0.5px solid var(--border); display: flex; gap: 6px; align-items: flex-start; }
+      .spoke-items li:last-child { border-bottom: none; }
+      .spoke-dot { width: 4px; height: 4px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+      @media (max-width: 640px) {
+        .hub-spoke-inner { display: flex; flex-direction: column; }
+        .hub-center { border-radius: var(--radius-lg); aspect-ratio: auto; padding: 1rem; }
+        .spoke-card::after { display: none; }
+      }
+    </style>
+
+    <div class="hub-spoke">
+      <div class="hub-spoke-inner">
+        <div class="spoke-card left">
+          <div class="spoke-emoji">🏠</div>
+          <div class="spoke-name">Parents</div>
+          <ul class="spoke-items">
+            <li><span class="spoke-dot" style="background:var(--teal-400);"></span>Peace of mind</li>
+            <li><span class="spoke-dot" style="background:var(--teal-400);"></span>Confidence their child is thriving</li>
+            <li><span class="spoke-dot" style="background:var(--teal-400);"></span>Visibility into wellbeing</li>
+            <li><span class="spoke-dot" style="background:var(--teal-400);"></span>A credible alternative to screens</li>
+            <li><span class="spoke-dot" style="background:var(--teal-400);"></span>Tools, not lectures</li>
+          </ul>
+        </div>
+
+        <div class="spoke-card left" style="grid-row:2;">
+          <div class="spoke-emoji">🏫</div>
+          <div class="spoke-name">Schools</div>
+          <ul class="spoke-items">
+            <li><span class="spoke-dot" style="background:var(--amber-400);"></span>Duty of care fulfilled</li>
+            <li><span class="spoke-dot" style="background:var(--amber-400);"></span>Measurable wellbeing benchmarks</li>
+            <li><span class="spoke-dot" style="background:var(--amber-400);"></span>Curriculum-aligned tools</li>
+            <li><span class="spoke-dot" style="background:var(--amber-400);"></span>Reduced admin burden</li>
+            <li><span class="spoke-dot" style="background:var(--amber-400);"></span>Reportable outcomes</li>
+          </ul>
+        </div>
+
+        <div class="hub-center">
+          <div class="sh-avatar">🎯</div>
+          <div class="hub-name">Teenager</div>
+          <div class="hub-items">Status · Identity<br>Fun · Belonging<br>Agency</div>
+        </div>
+
+        <div class="spoke-card right">
+          <div class="spoke-emoji">🏢</div>
+          <div class="spoke-name">Businesses</div>
+          <ul class="spoke-items">
+            <li><span class="spoke-dot" style="background:var(--coral-400);"></span>Brand reputation &amp; ESG credibility</li>
+            <li><span class="spoke-dot" style="background:var(--coral-400);"></span>Future workforce pipeline</li>
+            <li><span class="spoke-dot" style="background:var(--coral-400);"></span>Innovation via youth engagement</li>
+            <li><span class="spoke-dot" style="background:var(--coral-400);"></span>Measurable social &amp; commercial ROI</li>
+          </ul>
+        </div>
+
+        <div class="spoke-card right" style="grid-row:2;">
+          <div class="spoke-emoji">🏛️</div>
+          <div class="spoke-name">Government</div>
+          <ul class="spoke-items">
+            <li><span class="spoke-dot" style="background:var(--blue-400);"></span>Policy that demonstrably works</li>
+            <li><span class="spoke-dot" style="background:var(--blue-400);"></span>Reduced youth mental health burden</li>
+            <li><span class="spoke-dot" style="background:var(--blue-400);"></span>Visible, votable impact</li>
+            <li><span class="spoke-dot" style="background:var(--blue-400);"></span>International leadership</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p>The critical commercial insight: no stakeholder is being asked to act against their interests. Every participant is getting something real. That alignment is rare — and it's the foundation of a durable platform, not a one-cycle campaign.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PLATFORM -->
+  <div class="section" id="s-platform">
+    <p class="section-label">Platform model</p>
+    <h2 class="section-title">Three layers. One system.</h2>
+    <p class="section-body">A stacked platform that builds on itself — data enables programs, programs enable a marketplace, the marketplace funds the data layer.</p>
+
+    <div style="margin-top:1.5rem;">
+      <div class="platform-layer">
+        <div class="layer-header">
+          <span class="layer-badge badge-1">Layer 1</span>
+          <span class="layer-title">Measurement — Identity &amp; Wellbeing Index</span>
+          <span class="layer-sub">Foundation</span>
+        </div>
+        <div class="layer-body">
+          <p>The NAPLAN for wellbeing. Tracks self-esteem, belonging, resilience, and agency — delivered via school dashboards and parent tools. Establishes the category standard and becomes the data backbone for everything above it. Critically, it provides the longitudinal evidence that the platform works — across both cohorts, across generations.</p>
+          <div class="tag-row">
+            <span class="tag">SaaS to schools</span>
+            <span class="tag">Parent dashboard</span>
+            <span class="tag">ESG reporting</span>
+            <span class="tag">Benchmarking</span>
+            <span class="tag">Longitudinal data</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="platform-layer">
+        <div class="layer-header">
+          <span class="layer-badge badge-2">Layer 2</span>
+          <span class="layer-title">Experience — Programs &amp; Community</span>
+          <span class="layer-sub">Intervention</span>
+        </div>
+        <div class="layer-body">
+          <p>Replaces dopamine loops with earned progress and real feedback. Jobs for kids, offline-first challenges, crew-based identity, and inter-school competitions. Designed to be genuinely fun and status-generating — so that when kids hit 16, real life already feels more rewarding than the feed. The cultural quality of every experience is backed by <a href="https://finchcompany.com/" target="_blank" style="color:var(--teal-600);font-weight:500;">Finch</a>'s world-class production and events network.</p>
+          <div class="tag-row">
+            <span class="tag">Jobs for kids</span>
+            <span class="tag">Crew identity</span>
+            <span class="tag">National challenges</span>
+            <span class="tag">Seasonal drops</span>
+            <span class="tag">Live events</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="platform-layer">
+        <div class="layer-header">
+          <span class="layer-badge badge-3">Layer 3</span>
+          <span class="layer-title">Marketplace — Corporate &amp; Government</span>
+          <span class="layer-sub">Monetisation</span>
+        </div>
+        <div class="layer-body">
+          <p>Corporates shift from sponsors of a cause to participants in a system. Brands own a lane — creativity, performance, entrepreneurship, tech — providing tools, mentorship, and real-world access. Government co-funds outcomes. Parents subscribe selectively.</p>
+          <div class="tag-row">
+            <span class="tag">Employer fees</span>
+            <span class="tag">Brand participation</span>
+            <span class="tag">Government grants</span>
+            <span class="tag">Parent subscriptions</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BIG IDEAS -->
+  <div class="section" id="s-bigideas">
+    <p class="section-label">Big ideas</p>
+    <h2 class="section-title">Make real life more rewarding than the feed.</h2>
+    <p class="section-body">Teenagers don't adopt programs — they adopt things that give them status in front of other teenagers. These ideas are designed to be social without social media, highly visible, and culturally contagious. The test for every idea: would a 15-year-old actually want this?</p>
+
+    <div class="callout">
+      <p>"You're not building a program for teenagers. You're building a culture teenagers want to be part of."</p>
+    </div>
+
+    <div class="finch-strip">
+      <div class="finch-inner">
+        <div class="finch-logo-mark">F</div>
+        <div>
+          <div class="finch-label">Creative partner</div>
+          <div class="finch-text">The cultural credibility of these ideas depends entirely on execution. <a href="https://finchcompany.com/" target="_blank">Finch</a> — a globally renowned production company — brings world-class capability in film, live events, and youth culture to make this platform feel like something teenagers actually want to be part of.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ideas-grid">
+      <div class="idea-card">
+        <div class="idea-num">01 — Status systems</div>
+        <div class="idea-title">The Reputation Graph</div>
+        <div class="idea-body">Earned, visible status based on skills, creativity, and contribution. Titles like Builder, Connector, Leader — culturally designed, not corporate. Portable across schools and communities.</div>
+      </div>
+      <div class="idea-card">
+        <div class="idea-num">02 — Physical signals</div>
+        <div class="idea-title">Limited-edition wearables</div>
+        <div class="idea-body">Streetwear-inspired physical status markers designed by top creatives — and in time, co-created with status-rich teenagers themselves. If kids want to wear it, the platform has won. Think festival wristbands meets sneaker culture. Finch's network of designers, directors and cultural makers is the engine behind the aesthetic.</div>
+      </div>
+      <div class="idea-card">
+        <div class="idea-num">03 — Real-world virality</div>
+        <div class="idea-title">National challenge system</div>
+        <div class="idea-body">Constantly evolving missions and team competitions — designed like TikTok trends but executed in the real world. Seasonal drops create FOMO and cultural rhythm.</div>
+      </div>
+      <div class="idea-card">
+        <div class="idea-num">04 — Belonging</div>
+        <div class="idea-title">Crew-based identity</div>
+        <div class="idea-body">Small named crews (5–10) compete and build together. Follower count replaced by crew reputation. Inter-school rivalry extended beyond sport — State of Origin for identity.</div>
+      </div>
+      <div class="idea-card">
+        <div class="idea-num">05 — Public stages</div>
+        <div class="idea-title">36 Months Festival</div>
+        <div class="idea-body">Think SXSW meets X Games meets Coachella — but for teenagers. High-production events in public spaces and brand environments. Only accessible through participation. Feels like culture, not education. Just being there has status. This is where Finch's live event and experience capability turns the concept into something genuinely iconic.</div>
+      </div>
+      <div class="idea-card">
+        <div class="idea-num">06 — New cool</div>
+        <div class="idea-title">The "No Phone" badge</div>
+        <div class="idea-body">A visible symbol of opting out that becomes a status flex. Works only if culturally desirable — this is where the creative and narrative firepower of the Finch network is critical.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- REVENUE -->
+  <div class="section" id="s-revenue">
+    <p class="section-label">Revenue model</p>
+    <h2 class="section-title">Four diversified streams.</h2>
+    <table class="revenue-table">
+      <thead>
+        <tr>
+          <th style="width:130px;">Stream</th>
+          <th style="width:160px;">Model</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Schools</td>
+          <td>SaaS subscription</td>
+          <td>Measurement platform + program access. Aligns to existing wellbeing mandates and reporting requirements.</td>
+        </tr>
+        <tr>
+          <td>Corporates</td>
+          <td>Sponsorship + participation + recruitment fees</td>
+          <td>Brands fund and participate — not as sponsors of a cause, but as participants in a system with measurable ESG and bottom line outcomes.</td>
+        </tr>
+        <tr>
+          <td>Government</td>
+          <td>Grants + outcome-based funding</td>
+          <td>Mental health, education, and youth employment budgets. Wellbeing Index data provides the reporting layer.</td>
+        </tr>
+        <tr>
+          <td>Parents</td>
+          <td>Premium subscriptions</td>
+          <td>Optional. High willingness to invest in teen development. Dashboard tools, program access, progress tracking.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- GTM -->
+  <div class="section" id="s-gtm">
+    <p class="section-label">Go-to-market</p>
+    <h2 class="section-title">Three phases to national scale.</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-title" style="margin-bottom:0.25rem;">Phase 1 — Anchor</div>
+        <div class="card-body" style="margin-bottom:0.75rem;">Launch with 5–10 leading schools and 3–5 flagship corporates. Founders act as the trust and distribution layer. Co-design with teens from day one.</div>
+        <div class="tag-row"><span class="tag">Pilot schools</span><span class="tag">Flagship partners</span></div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="margin-bottom:0.25rem;">Phase 2 — Proof</div>
+        <div class="card-body" style="margin-bottom:0.75rem;">Publish the first Wellbeing Index Report. Demonstrate measurable uplift in confidence, engagement, and participation. Build the longitudinal data narrative for both cohorts.</div>
+        <div class="tag-row"><span class="tag">Wellbeing Index</span><span class="tag">Impact data</span></div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="margin-bottom:0.25rem;">Phase 3 — Scale</div>
+        <div class="card-body" style="margin-bottom:0.75rem;">Expand via education departments, corporate coalitions, and media amplification. Wippa's reach and Finch's brand architecture accelerate national rollout. Platform becomes the default.</div>
+        <div class="tag-row"><span class="tag">Dept. of Education</span><span class="tag">Corporate coalition</span></div>
+      </div>
+    </div>
+
+    <div class="finch-strip">
+      <div class="finch-inner">
+        <div class="finch-logo-mark">F</div>
+        <div>
+          <div class="finch-label">Go-to-market advantage</div>
+          <div class="finch-text"><a href="https://finchcompany.com/" target="_blank">Finch</a> and its global network of directors, producers, and cultural strategists means the platform launches with the creative infrastructure to produce campaigns, events, and content that resonate with youth culture — not as an afterthought, but as a core competitive advantage from day one.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- RISKS -->
+  <div class="section" id="s-risks">
+    <p class="section-label">Risks &amp; mitigation</p>
+    <h2 class="section-title">Five risks to manage.</h2>
+    <div>
+      <div class="risk-row">
+        <span class="risk-label">Commercialising a cause</span>
+        <span class="risk-fix">Ringfence the mission. Transparent impact reporting. Measurement layer makes outcomes undeniable, not performative.</span>
+      </div>
+      <div class="risk-row">
+        <span class="risk-label">Low teen engagement</span>
+        <span class="risk-fix">Co-design with teens from day one. Prioritise intrinsic rewards. Apply the same creative firepower used in the campaign.</span>
+      </div>
+      <div class="risk-row">
+        <span class="risk-label">School adoption friction</span>
+        <span class="risk-fix">Align to existing curriculum and wellbeing mandates. Reduce admin load — make it easy to say yes.</span>
+      </div>
+      <div class="risk-row">
+        <span class="risk-label">Only serving today's cohort</span>
+        <span class="risk-fix">Build for the next generation from the start. Longitudinal design, not programme logic. Platform must compound in value over time.</span>
+      </div>
+      <div class="risk-row">
+        <span class="risk-label">Credibility scrutiny</span>
+        <span class="risk-fix">Media scrutiny is already emerging. Independent measurement and published outcomes are the shield — not PR.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="insight-box">
+      <p style="font-size:18px; line-height:1.5;">"The platform that helps kids become someone... before the internet tells them who to be."</p>
+    </div>
+    <p class="footer-meta">36 Months Commercial Strategy — Phase 2 &nbsp;·&nbsp; Confidential stakeholder document &nbsp;·&nbsp; 2025</p>
+  </div>
+
+</div>
+
+</body>
+</html>
